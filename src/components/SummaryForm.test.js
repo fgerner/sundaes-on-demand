@@ -35,14 +35,14 @@ describe('Order summary Form', () => {
 
         const termsAndConditions = await screen.getByText(/terms and conditions/i);
         userEvent.hover(termsAndConditions)
-        popover = await screen.getByText(/no goods will be delivered/i);
+        popover = await screen.findByText(/no goods will be delivered/i);
         expect(popover).toBeInTheDocument()
     });
     it('should remove the popover when users pointer leaves checkbox label', async function () {
         render(<SummaryForm/>);
-        const termsAndConditions = screen.getByText(/terms and conditions/i);
+        const termsAndConditions = await screen.findByText(/terms and conditions/i);
         userEvent.hover(termsAndConditions)
-        let popover = screen.getByText(/no goods will be delivered/i);
+        let popover = await screen.findByText(/no goods will be delivered/i);
         expect(popover).toBeInTheDocument()
 
         userEvent.unhover(termsAndConditions)
